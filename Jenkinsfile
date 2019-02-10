@@ -84,6 +84,7 @@ spec:
             sh '''
                 pwd
                 mount
+                whoami
                 cat test
                 cat /test
             '''
@@ -92,6 +93,7 @@ spec:
             sh '''
                 pwd
                 mount
+                whoami
                 cat test
                 cat /test
             '''
