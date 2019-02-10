@@ -25,7 +25,6 @@ spec:
         HELLO = "World"
       }
       steps {
-        git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
         container(name: 'busybox', shell: '/bin/sh') {
             sh '''
                 env
