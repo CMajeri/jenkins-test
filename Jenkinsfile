@@ -88,7 +88,7 @@ spec:
                 cat /test
             '''
         }
-        container(name: 'busy1', shell: '/bin/sh') {
+        container(name: 'busy2', shell: '/bin/sh') {
             sh '''
                 pwd
                 mount
