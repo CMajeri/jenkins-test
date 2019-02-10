@@ -50,8 +50,9 @@ spec:
         }
       }
     }
-    
+
     stage('Test2') {
+      steps {
         container(name: 'busy2', shell: '/bin/sh') {
             sh '''
                 env
@@ -60,6 +61,7 @@ spec:
                 [ -f test ] && cat test
             '''
         }
+      }
     }
   }
 }
