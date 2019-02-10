@@ -37,6 +37,7 @@ spec:
             sh '''
                 env
                 echo Hello $HELLO from 1 | nc 192.168.1.40 5000
+                echo testing > /test
                 echo hello > test
             '''
         }
@@ -46,6 +47,9 @@ spec:
                 echo Hello $HELLO from 2 | nc 192.168.1.40 5000
                 ls -la
                 [ -f test ] && cat test
+                ls -la /
+                [ -f /test ] && cat /test
+                echo "testing2" > /test
             '''
         }
       }
@@ -53,12 +57,22 @@ spec:
 
     stage('Test2') {
       steps {
+        container(name: 'busy1', shell: '/bin/sh') {
+            sh '''
+                env
+                echo Hello again from 1 | nc 192.168.1.40 5000
+                echo testing1 > /test
+                [ -f /test ] && cat /test
+            '''
+        }
+
         container(name: 'busy2', shell: '/bin/sh') {
             sh '''
                 env
                 echo Hello again from 2 | nc 192.168.1.40 5000
                 ls -la
                 [ -f test ] && cat test
+                [ -f /test ] && cat /test
             '''
         }
       }
