@@ -77,5 +77,26 @@ spec:
         }
       }
     }
+
+    stage('Test3') {
+      steps {
+        container(name: 'busy1', shell: '/bin/sh') {
+            sh '''
+                pwd
+                mount
+                cat test
+                cat /test
+            '''
+        }
+        container(name: 'busy1', shell: '/bin/sh') {
+            sh '''
+                pwd
+                mount
+                cat test
+                cat /test
+            '''
+        }
+      }
+    }
   }
 }
